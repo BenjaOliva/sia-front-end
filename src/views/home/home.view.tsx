@@ -25,7 +25,7 @@ export const Home: React.FC<HomeProps> = ({
   const formikInstance = useFormik<KMeansRequest>({
     initialValues: {
       type: "vectorizado",
-      clusters: 0,
+      clusters: 2,
       atributos: [],
       iteraciones: 100,
       seed_inicial: 10,
@@ -84,76 +84,96 @@ export const Home: React.FC<HomeProps> = ({
                 <FormControl id="atributos">
                   <FormLabel>Atributos</FormLabel>
                   <Stack spacing={[1, 5]} direction={["row", "column"]}>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(0)}
-                    >
-                      fixedacid
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(1)}
-                    >
-                      volacid
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(2)}
-                    >
-                      citricacid
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(3)}
-                    >
-                      residualsugar
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(4)}
-                    >
-                      chlorides
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(5)}
-                    >
-                      freesulfur
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(6)}
-                    >
-                      totalsulfur
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(7)}
-                    >
-                      density
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(8)}
-                    >
-                      pH
-                    </Checkbox>
-                    <Checkbox
-                      size="lg"
-                      colorScheme="green"
-                      onChange={() => updateAndOrderAtributos(9)}
-                    >
-                      sulphates
-                    </Checkbox>
+                    <Stack spacing={1} direction={"row"} w={'full'}>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(0)}
+                      >
+                        fixedacid
+                      </Checkbox>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(1)}
+                      >
+                        volacid
+                      </Checkbox>
+                    </Stack>
+                    <Stack spacing={1} direction={"row"} w={'full'}>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(2)}
+                      >
+                        citricacid
+                      </Checkbox>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(3)}
+                      >
+                        residualsugar
+                      </Checkbox>
+                    </Stack>
+                    <Stack spacing={1} direction={"row"} w={'full'}>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(4)}
+                      >
+                        chlorides
+                      </Checkbox>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(5)}
+                      >
+                        freesulfur
+                      </Checkbox>
+                    </Stack>
+                    <Stack spacing={1} direction={"row"} w={'full'}>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(6)}
+                      >
+                        totalsulfur
+                      </Checkbox>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(7)}
+                      >
+                        density
+                      </Checkbox>
+                    </Stack>
+                    <Stack spacing={1} direction={"row"} w={'full'}>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(8)}
+                      >
+                        pH
+                      </Checkbox>
+                      <Checkbox
+                        size="lg"
+                        w='50%'
+                        colorScheme="green"
+                        onChange={() => updateAndOrderAtributos(9)}
+                      >
+                        sulphates
+                      </Checkbox>
+                    </Stack>
                     <Checkbox
                       size="lg"
                       colorScheme="green"

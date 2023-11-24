@@ -7,7 +7,10 @@ const appUrl = "http://localhost:8000";
 
 export interface BikletaPointsService {
   trainRequest: (params: KMeansRequest) => Promise<any>;
-  predictResult: (params?: any) => Promise<any>;
+  predictResult: (params: {
+    point: number[];
+    modelData: KMeansRequest;
+  }) => Promise<any>;
 }
 
 export const useKMeansService = (): BikletaPointsService => {
@@ -25,12 +28,18 @@ export const useKMeansService = (): BikletaPointsService => {
     return res.data;
   };
 
-  const predictResult = async (search: any) => {
-    //console.log('Params get: ', search);
-    const res = await axios.get(appUrl + "/searchEngine/bikleta/predict", {
-      params: {
-        search,
-      },
+  const predictResult = async (params: {
+    point: number[];
+    modelData: KMeansRequest;
+  }) => {
+    const endpoint =
+    params.modelData.type === "vectorizado"
+      ? "/predecir-cluster"
+      : "/predecir-cluster-nv";
+          const res = await axios.post(appUrl + endpoint, {
+      nuevo_elemento: params.point,
+      atributos: params.modelData.atributos,
+      clusters: params.modelData.clusters,
     });
     return res.data;
   };

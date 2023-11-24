@@ -1,6 +1,12 @@
+import { KMeansRequest } from "../home/interfaces";
+
 export interface ResultsController {
   results: KMeansResponse;
-  generatePrediccion: () => void;
+  trainData: KMeansRequest;
+  openPredict: boolean;
+  setOpenPredict: (value: boolean) => void;
+  generatePrediccion: (point: number[]) => Promise<void>;
+  predictedCluster: number | undefined;
 }
 
 export interface ResultsProps {
