@@ -12,6 +12,7 @@ import {
   Link,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
@@ -21,7 +22,7 @@ export const Results: React.FC<ResultsProps> = ({
 }) => {
   const controller = useController();
   const navigation = useNavigate();
-
+  const toast = useToast();
   const formikInstance = useFormik<{ point: number[] }>({
     initialValues: {
       point: [],
@@ -29,12 +30,36 @@ export const Results: React.FC<ResultsProps> = ({
     onSubmit: async (values) => {
       console.log(values);
 
-      await controller.generatePrediccion(values.point);
+      await controller
+        .generatePrediccion(values.point)
+        .then((res) => {
+          toast({
+            status: "success",
+            title: "Predicción realizada",
+            description: `El punto ingresado fue predicho con éxito`,
+            duration: 3000,
+          });
+        })
+        .catch((err) => {
+          toast({
+            status: "error",
+            title: "Error",
+            description: `Ocurrió un error al realizar la predicción`,
+            duration: 3000,
+          });
+        });
     },
   });
 
   const addValueToPoint = (value: number) => {
     const point = formikInstance.values.point;
+
+    toast({
+      status: "success",
+      title: "Valor agregado",
+      description: `Se agregó el valor ${value} al punto a predecir`,
+      duration: 3000,
+    });
 
     point.push(value);
 
